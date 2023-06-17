@@ -1,16 +1,22 @@
-const getElement = (selector) => {
-    const element = document.querySelector(selector);
+$(document).ready(function () {
+    $nav = $(".nav");
+    $toggleCollapse = $(".toggle-collapse");
 
-    if (element) return element;
-    throw Error(
-        `Please double check your class names, there is no ${selector} class`
-    );
-};
+    // toggle menu
+    $toggleCollapse.click(function () {
+        $nav.toggleClass("collapse");
+    });
 
-const nav = getElement(".nav");
-const toggleCollapse = getElement(".toggle-collapse");
-
-toggleCollapse.addEventListener("click", () => {
-    console.log(toggleCollapse);
-    nav.classList.toggle("collapse");
+    // owl carousel for blog
+    $(".owl-carousel").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        dots: false,
+        nav: true,
+        navText: [
+            $(".owl-navigation .owl-nav-prev"),
+            $(".owl-navigation .owl-nav-next"),
+        ],
+    });
 });
